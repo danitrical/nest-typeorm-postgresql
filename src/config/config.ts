@@ -34,5 +34,11 @@ const DATABASECONFIG: TypeOrmModuleOptions = {
     idle_in_transaction_session_timeout: 22222,
   },
 };
+const SWAGGER_CONFIG = {
+  title: process.env['SWAGGER_TITLE'],
+  description: process.env['SWAGGER_DESCRIPTION'],
+  version: process.env['SWAGGER_VERSION'],
+  tag: process.env['SWAGGER_TAG'],
+};
 
-export { DATABASECONFIG };
+export { DATABASECONFIG, SWAGGER_CONFIG };

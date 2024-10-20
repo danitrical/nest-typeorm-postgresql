@@ -15,4 +15,11 @@ interface DatabaseConfig {
   extras: any;
 }
 
-export { DatabaseConfig };
+interface SwaggerConfig {
+  title: string;
+  description: string;
+  version: string;
+  tag: string;
+}
+
+export { DatabaseConfig, SwaggerConfig };
