@@ -10,7 +10,7 @@ const ssl = ENV !== 'local' &&
     ca: fs.readFileSync(RDS_CA_BUNDLE).toString(),
   };
 
-console.log({ ssl });
+console.log({ ssl, a: process.env['DB_HOSTNAME'] });
 
 const DATABASECONFIG: TypeOrmModuleOptions = {
   host: process.env['DB_HOSTNAME'],
@@ -20,12 +20,12 @@ const DATABASECONFIG: TypeOrmModuleOptions = {
   password: process.env['DB_PASSWORD'],
   database: process.env['DB'],
   migrationsRun: Boolean(process.env['DB_MIGRATION_RUN']),
+  migrationsTableName: 'migrations',
   name: process.env['DB_NAME'],
   autoLoadEntities: Boolean(process.env['DB_AUTO_LOAD_ENTITIES']),
   synchronize: false,
   logging: true,
   migrations: ['dist/migrations/*{.ts,.js}'],
-  migrationsTableName: process.env['DB_HOSTNAME'],
   // ssl: ssl,
   extra: {
     max: 20,
@@ -41,4 +41,6 @@ const SWAGGER_CONFIG = {
   tag: process.env['SWAGGER_TAG'],
 };
 
-export { DATABASECONFIG, SWAGGER_CONFIG };
+const JWT_API_KEY = process.env['JWT_API_KEY'];
+
+export { DATABASECONFIG, SWAGGER_CONFIG, JWT_API_KEY };
