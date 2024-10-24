@@ -77,3 +77,6 @@ Nest is [MIT licensed](LICENSE).
 
 # Format with prettier
 ```$ npm run format```
+
+# Generate Migrations
+```npm run typeorm migration:create src/migrations/{migrationName}```
